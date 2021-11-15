@@ -16,7 +16,7 @@ class Cards {
     let cardNumber = 0;
     for (let card of deck) {
       let faceValueName;
-      switch (card[1]) {
+      switch (card[1]) { // not easily readable - what is card[0] and what is card[1]
         case 0:
           faceValueName = "ace";
           break;
@@ -70,3 +70,37 @@ for (const card of deckInOrder) {
 module.exports = {
   Cards
 };
+
+// deck: 52x (card: (suit: 0-3), (value: 2-10, J, Q, K, A), push itself to deck)
+
+class Card {
+  constructor(value) {
+    this.value = value;
+    
+  }
+}
+
+const suit = {1: "clubs",
+              2: "diamonds", 
+              3: "hearts", 
+              4: "spades"};
+
+class Deck {
+  constructor(value, suit) {
+    
+  }
+
+  // functions: shuffle() {}
+  // getRandomCard() {}
+}
+
+/* 
+1 - A
+2-10
+11 - J
+12 - Q
+13 - K
+*/
+
+// function to loop for all values
+// function to add suit to the list

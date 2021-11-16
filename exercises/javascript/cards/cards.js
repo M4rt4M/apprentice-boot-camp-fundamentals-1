@@ -1,3 +1,4 @@
+const PlayingCard = require("./playing-card.js").PlayingCard;
 // to execute the runnable code in this file, use the command
 // `node cards/cards.js` from the command line positioned at
 // the project's root directory.
@@ -8,19 +9,21 @@ class Cards {
     const deck = []
   
     for (let suit = 0; suit < 4; suit++) {
-      for (let faceValue = 0; faceValue < 13; faceValue++) {
-        deck.push([suit, faceValue]);
+      for (let faceValue = 1; faceValue <= 13; faceValue++) {
+        // Create new card
+        const playingCard = new PlayingCard(suit, faceValue);
+        // Add to the deck
+        deck.push(playingCard);
       }
     }
   
     let cardNumber = 0;
     for (let card of deck) {
       let faceValueName;
-      switch (card[1]) { // not easily readable - what is card[0] and what is card[1]
-        case 0:
+      switch (card.faceValue) {
+        case 1:
           faceValueName = "ace";
           break;
-        case 1:
         case 2:
         case 3:
         case 4:
@@ -29,30 +32,27 @@ class Cards {
         case 7:
         case 8:
         case 9:
-          faceValueName = (card[1] + 1).toString();
-          break;
         case 10:
-          faceValueName = "jack";
+          faceValueName = card.faceValue.toString();
           break;
         case 11:
-          faceValueName = "queen";
+          faceValueName = "jack";
           break;
         case 12:
+          faceValueName = "queen";
+          break;
+        case 13:
           faceValueName = "king";
           break;
         default:
-          throw new Error("Something went wrong " + card[1] + " is not a valid faceValue!");
+          throw new Error(
+            "Something went wrong " +
+              card.faceValue +
+              " is not a valid faceValue!"
+          );
       }
-  
-      let suitName;
-      switch (card[0]) {
-        case 0: suitName = "clubs"; break;
-        case 1: suitName = "diamonds"; break;
-        case 2: suitName = "hearts"; break;
-        case 3: suitName = "spades"; break;
-        default: throw new Error("Something went wrong " + card[0] + " is not a valid suitName!");
-      }
-  
+
+      let suitName = card.suit;
       result[cardNumber] = faceValueName + " of " + suitName;
       cardNumber++;
     }

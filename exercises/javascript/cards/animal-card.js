@@ -10,8 +10,12 @@ class AnimalCard {
   toString() {
     return this.animal.toString();
   }
-};
+
+  getValue() {
+    return this.animal;
+  }
+}
 
 module.exports = {
-  AnimalCard
+  AnimalCard,
 };

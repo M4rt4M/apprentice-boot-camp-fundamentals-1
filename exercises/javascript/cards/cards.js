@@ -43,18 +43,3 @@ for (const card of deckInOrder) {
 module.exports = {
   PlayingCardDeck
 };
-
-
-  // functions: shuffle() {}
-  // getRandomCard() {}
-
-/* 
-1 - A
-2-10
-11 - J
-12 - Q
-13 - K
-*/
-
-// function to loop for all values
-// function to add suit to the list

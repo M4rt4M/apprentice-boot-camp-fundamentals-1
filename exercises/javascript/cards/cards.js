@@ -1,45 +1,21 @@
-const PlayingCard = require("./playing-card.js").PlayingCard;
-const Suits = require('./suits').Suits;
-// to execute the runnable code in this file, use the command
-// `node cards/cards.js` from the command line positioned at
-// the project's root directory.
-
-class PlayingCardDeck {
-  constructor() {
-    this.cards = this.setCards();
+class Card {
+  constructor(value) {
+    this.value = value;
   }
 
-  setCards() {
-    var cards = [];
-
-    for (var i = 0; i < Suits.length; i++) {
-      for (var j = 1; j <= 13; j++) {
-        var card = new PlayingCard(Suits[i], j);
-        cards.push(card);
-      }
-    }
-
-    return cards;
+  snap(otherCard) {
+    return otherCard && this.value === otherCard.value;
   }
 
-  getCards() {
-    var result = [];
+  toString() {
+    return this.value.toString();
+  }
 
-    for (var i = 0; i < this.cards.length; i++) {
-      const card = this.cards[i];
-      result.push(card.toString());
-    }
-
-    return result;
+  getValue() {
+    return this.value;
   }
 };
 
-const cards = new PlayingCardDeck();
-const deckInOrder = cards.getCards();
-for (const card of deckInOrder) {
-  console.log(card);
-}
-
 module.exports = {
-  PlayingCardDeck
+  Card,
 };

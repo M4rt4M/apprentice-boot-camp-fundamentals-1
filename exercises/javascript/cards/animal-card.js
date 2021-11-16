@@ -1,18 +1,7 @@
-class AnimalCard {
+const { Card } = require("./card.js");
+class AnimalCard extends Card {
   constructor(animal) {
-    this.animal = animal;
-  }
-
-  snap(otherCard) {
-    return otherCard && this.animal === otherCard.animal;
-  }
-
-  toString() {
-    return this.animal.toString();
-  }
-
-  getValue() {
-    return this.animal;
+    super(animal);
   }
 }
 
